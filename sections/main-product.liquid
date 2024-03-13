@@ -1,0 +1,176 @@
+<div id="main-product" class="main" data-section-id="{{ section.id }}" data-product-section>
+  <!--INFO-BUY-->
+  <div class="buy-block">
+    <!--PRODUCT INFO-->
+    {%- assign productFormId = 'product-form-' | append: section.id -%}
+    {%- form "product", product, id: productFormId, class: '' -%}
+    <input type="hidden" name="product-id" value="{{- product.id -}}">
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    {%- if product.has_only_default_variant -%}
+    {%- elsif variants > 1 -%}
+    class="product-variants"
+    {%- endif -%}
+    <div id="bag" class="bag
+      {% if product.compare_at_price > product.price %}
+      sale
+      {% else %}
+      {% endif %}
+      {% if product.available %}
+      {% else %}
+      sold
+      {% endif %}
+    ">
+      <div style="background-color:var(--darker);" class="row">
+        <div  class="main-information">
+          <div>{{ product.title }}</div>
+          <div class="product-price">
+            {% if product.available %}
+            {% if product.price_varies %}
+            <span>{{ product.price_min | money }}</span> – <span>{{ product.price_max | money }}</span>
+            {% else %}
+            {% if product.compare_at_price > product.price %}
+            <s>{{ product.compare_at_price | money }}</s>
+            <span class="red">{{ product.price | money }}</span>
+            {% else %}
+            <span>{{ product.price | money }}</span>
+            {% endif %}
+            {% endif %}
+            {% else %}
+            <span>{{ product.price | money }}</span>
+            {% endif %}
+          </div>
+          <form id="product-actions" action="/cart/add" method="post" enctype="multipart/form-data"
+            {%- if product.has_only_default_variant -%}
+            class="product-simple"
+            {%- elsif variants > 1 -%}
+            class="product-variants"
+            {%- endif -%}>
+            {% if product.compare_at_price > product.price %}
+            <div class="onsale">ON SALE</div>
+            {% else %}
+            {% endif %}
+            {% if product.available %}
+            {% else %}
+            <div class="sold-out">SOLD OUT</div>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+      <!-- Variations Dropdown -->
+      {% render 'product-variants', product: product, formID: productFormId %}
+      <div class="variations">
+        <!-- Button Add To Bag -->
+        {% liquid
+        assign selectedVariant = product.selected_or_first_available_variant
+        if selectedVariant.available
+        assign addToCartText = 'ADD TO BAG'
+        else
+        assign addToCartText = 'SOLD OUT'
+        endif
+        %}
+        <button id="add-to-bag" {% unless product.available %}disabled{% endunless %} type="submit" name="add" data-add-to-cart>
+          <span class="" data-add-to-cart-text>
+            {{ addToCartText }}
+          </span>
+        </button>
+        {% assign product_qty = 0 %}
+        {% for variant in product.variants %}
+        {% if variant.inventory_quantity > 0 %}
+        {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% if product_qty < 4 %}
+    <div class="menu-title left">ITEMS LEFT <span>{{ product_qty }}</span></div>
+    {% endif %}
+    {% endform %}
+    <div class="product_information">
+      <div class="extra">
+        {% unless product.metafields.custom.extra_info == blank %}
+        {{ product.metafields.custom.extra_info }}
+        {% endunless %}
+      </div>
+    </div>
+    {% assign info = product.metafields.custom.info_product | default: '' %}
+    {% assign shipping = product.metafields.custom.shipping-info | default: '' %}
+    {% assign policies = product.metafields.custom.polcies_info | default: '' %}
+    <div class="desplegable">
+    {% if info != blank %}
+    <details open>
+      <summary>INFO PRODUCT</summary>
+      <div class="interior">
+        {{ product.metafields.custom.product_info | metafield_tag }}
+      </div>
+      </details>
+    {% endif %}
+    {% if shipping != blank %}
+    <details>
+      <summary>SHIPPING TIME</summary>
+      <div class="interior">
+        {{ product.metafields.custom.info_shipping | metafield_tag }}
+      </div>
+      </details>
+    {% endif %}
+    {% if policies != blank %}
+    <details>
+      <summary>POLCIES</summary>
+      <div class="interior">
+        {{ product.metafields.custom.info_policies | metafield_tag }}
+      </div>
+      </details>
+    {% endif %}
+    </div>
+  </div>
+  <div class="desplegable dos">
+  {% if info != blank %}
+  <details>
+    <summary>INFO PRODUCT</summary>
+    <div class="interior">
+      {{ product.metafields.custom.product_info | metafield_tag }}
+    </div>
+    </details>
+  {% endif %}
+  {% if shipping != blank %}
+  <details>
+    <summary>SHIPPING TIME</summary>
+    <div class="interior">
+      {{ product.metafields.custom.info_shipping | metafield_tag }}
+    </div>
+    </details>
+  {% endif %}
+  {% if policies != blank %}
+  <details>
+    <summary>POLCIES</summary>
+    <div class="interior">
+      {{ product.metafields.custom.info_policies | metafield_tag }}
+    </div>
+    </details>
+  {% endif %}
+  </div>
+  <!--GALLERY-->
+  <div class="product_gallery">
+    {% for media in product.media %}
+    {% case media.media_type %}
+    {% when 'video' %}
+    {{ media | video_tag:loop: true, autoplay: true, muted:true}}
+    {% endcase %}
+    {% case media.media_type %}
+    {% when 'image' %}
+    <img class="lazy" src="{{ media | product_img_url: 'thumb' }}" data-src="{{ media | product_img_url: 'master' }}" alt="{{ media.alt }}"/>
+    {% endcase %}
+    {% endfor %}
+  </div>
+  <div class="product_gallery_second">
+    {% assign array_of_badges = product.metafields.custom.gallery_extra.value %}
+       {% for product_badge in array_of_badges %}
+        <img src="{{ product_badge | image_url }}">
+       {% endfor %}
+  </div>
+  <div class="product_gallery_last">
+    {% assign array_of_badges = product.metafields.custom.last_image_fullwitdth.value %}
+       {% for product_badge in array_of_badges %}
+        <img src="{{ product_badge | image_url }}">
+       {% endfor %}
+  </div>
+</div>

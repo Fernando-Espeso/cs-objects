@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+{% echo shop.name %}
+Design by Fernando Espeso
+Code by Fernando Espeso
+fernandoepeso.info
+{{ 'now' | date: "%Y" }}
+-->
+<html lang="{{ shop.locale }}" style="padding-bottom:0px;">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  {%- if template.name != "index" and template.name != "cart" -%}
+    <title>{{ shop.name }} — {{ page_title }}</title>
+  {%- elsif template.name == "cart" -%}
+    <title>{{ shop.name }} — {% if cart.item_count == 0 %}Empty {% endif %}Cart</title>
+  {%- else -%}
+    <title>{{ shop.name }}</title>
+  {%- endif -%}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="canonical" href="{{ canonical_url }}" />
+  {%- if settings.favicon.size > 0 -%}
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}">
+  {%- endif -%}
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}" />
+  {%- else -%}
+    <meta name="description" content="{{ shop.description }}" />
+  {%- endif -%}
+  {%- if template contains '404' or template contains 'cart' or template contains 'search' -%}
+    <meta name="robots" content="noindex">
+  {%- endif -%}
+  {{ 'style.css'  | asset_url | stylesheet_tag }}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  {{ 'current-device-browser.min.js' | asset_url | script_tag }}
+  {%- if template == 'product' -%}
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {%- endif -%}
+  {{ 'global.js' | asset_url | script_tag }}
+  {%- if template == "cart" and cart.item_count > 0 -%}
+    {{ 'global-cart.js' | asset_url | script_tag }}
+  {%- endif -%}
+  {%- if template == 'product' -%}
+    {{ '//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js' | script_tag }}
+    <link rel="preload" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  {%- endif -%}
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
+             {%- if template.suffix.size > 0 -%}
+             template-{{ template.suffix }}(&nbsp;
+             {% endif %}
+             {%- if template == 'cart' and cart.item_count == 0 -%}
+             template-cart-empty
+             {%- endif -%}">
+    <div id="loader"
+         style="position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100%;
+                background-color: white;
+                z-index: 99999999;">
+      <script type="text/javascript">
+        setTimeout(function(){
+          $("#loader").delay(10).fadeOut(function(){
+            $(this).remove();
+          });
+        }, 500);
+      </script>
+    </div>
+    <!-- Header -->
+    <header id="header">
+      <div class="menu" id="menu">
+        <div class="menu-open">MENU</div>
+        <div class="shop">SHOP</div>
+        <div class="search">
+          <a>
+            <form autocomplete="off" action="{{ routes.search_url }}" style="display:flex;">
+             <input type="hidden" name="type" value="product">
+             <input type="text" placeholder="SEARCH PRODUCTS" name="q" value="{{ search.terms | escape }}">
+           </form>
+          </a>
+        </div>
+        <div class="brand desktop">NIIHAI</div>
+        <div class="brand none"><a href="/home">NIIHAI</a></div>
+      </div>
+      <div class="cart-part">
+        <a href="/cart" class="cov"></a>
+        {% for link in linklists.top-bar.links %}
+          <li class="nain" {% if link.active %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        <li {% if cart.item_count > 0 %} style="background-color:yellow;"{% endif %}  {% if template == 'cart' %}  style="background-color:yellow;"{% endif %}>
+          <a id="cart" href="/cart">
+            BAG <span class="cart-total">
+              {%- if cart.item_count == 0 -%}
+                0
+              {%- else -%}
+                {{- cart.item_count -}}
+              {%- endif -%}
+            </span>
+          </a>
+        </li>
+      </div>
+    </header>
+    <div class="categories">
+      {% assign current_collection_handle = collection.handle | default: '' %}
+      {% assign product_count = collections.all.products_count %}
+      <!-- <li {% if request.path == '/collections/all' %}class="active"{% endif %} ><a href="/collections/all">ALL<span> {{ product_count }}</span></a></li> -->
+      {% for collection in collections %}
+        <li id="{{ collection.title }}" {% if collection.handle == current_collection_handle %} class="active" {% endif %}>
+          <a href="{{ collection.url }}">{{ collection.title }} <span>{{ collection.all_products_count }}</span></a>
+        </li>
+      {% endfor %}
+      {% if template == 'collection'%}
+        <li id="hig"><a class="sort invert" data-sort="price">Hight to Low</a></li>
+        <li><a class="sort" data-sort="price">Low to high</a></li>
+      {%- endif -%}
+    </div>
+    <div class="brand-links">
+      {% for link in linklists.menu.links %}
+        <li {% if link.active %}class="active"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </div>
+      <div id="screenSaver">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 289.9 64.7" style="enable-background:new 0 0 289.9 64.7;" xml:space="preserve">
+            <style type="text/css">
+            .st0{fill:#FFFFFF;}
+            </style>
+            <g id="Layer_1">
+            <g>
+              <polygon class="st0" points="48.6,0 14.1,40.7 14.1,0 -0.3,0 -0.3,64.7 13.5,64.7 48.2,24.5 48.2,64.7 62.7,64.7 62.7,0 "></polygon>
+              <rect x="78.4" y="0" class="st0" width="14.5" height="64.7"></rect>
+              <rect x="108.5" y="0" class="st0" width="14.5" height="64.7"></rect>
+              <polygon class="st0" points="185.2,0 185.2,24.9 153.1,24.9 153.1,0 138.6,0 138.6,64.7 153.1,64.7 153.1,41.4 185.2,41.4
+                185.2,64.7 199.7,64.7 199.7,0 "></polygon>
+              <path class="st0" d="M237.8,20.7l6.1,17.7h-12.6L237.8,20.7z M231.2,0l-25.9,64.7h16l5.3-13.8h22l5,13.8h16L244.6,0H231.2z"></path>
+              <rect x="275.1" class="st0" width="14.5" height="64.7"></rect>
+            </g>
+            </g>
+            <g id="Capa_2">
+            </g>
+            <g id="Capa_3">
+            </g>
+            <g id="Capa_4">
+            </g>
+            <g id="Capa_5">
+            </g>
+            </svg>
+
+      </div>
+    {{ content_for_layout }}
+  <footer>
+    <ul class="nav-brand">
+      {% for link in linklists.main-menu.links %}
+        <li {% if link.active %}class="active"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="cred">
+    <div class="hide">© NIIHAI UK LONDON {{ 'now' | date: "%Y" }}</div>
+    <div class="credits">SITE BY <a href="https://www.fernandoespeso.info/">FERNANDO ESPESO</a></div>
+    </div>
+  </footer>
+  {%- if template contains 'product' -%}
+    {{ 'global-product.js' | asset_url | script_tag }}
+  {%- endif -%}
+  {%- if template == 'product' -%}
+	   {% render 'ajaxify-cart' %}
+     {%- endif -%}{% render 'mws_apo_init' %}
+</body>
+</html>
