@@ -1109,9 +1109,12 @@ a.size-guide {
 .menu-title {
   top: 29px;
   z-index: 10;
-  background-color: var(--darker);
   position: fixed;
   width: 200px;
+  font-size: var(--x);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 5px 5px 2px;
 }
 li#SALE{
