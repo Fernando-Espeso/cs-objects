@@ -1,8 +1,6 @@
 {% if cart.item_count > 0 %}
   <form id="cart-wrapper" action="/cart" method="post">
     <div class="total">
-      <div class="section">SUBTOTAL</div>
-      <div>{{ cart.total_price | money }}</div>
       <input id="update-cart" type="submit" name="update" value="Update cart" style="display: none" />
       <button id="checkout" type="submit" name="checkout">Proceed to Checkout</button>
     </div>
@@ -51,6 +49,8 @@
       </div>
     {% endfor %}
   </form>
+  <div class="section">SUBTOTAL</div>
+  <div>{{ cart.total_price | money }}</div>
 {% else %}
   <!--Empty Bag-->
   <div class="menu-title cartie">Your bag is Currently empty <br><div class="small">GO BACK TO 
