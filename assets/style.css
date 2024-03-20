@@ -1227,10 +1227,6 @@ grid-column: span 3;
   display: grid;
       margin-bottom: calc(var(--m) + 5px);
 }
-.total > div{
-  padding: 5px;
-  padding-bottom: 2px;
-}
 
 .item {
   grid-column: 9/span 4;
