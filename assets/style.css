@@ -754,9 +754,6 @@ details > summary::-webkit-details-marker {
 }
 
 .onsale {
-  text-align: right;
-  float: right;
-  position: absolute;
   right: 5px;
   color: black;
   left: 0px;
