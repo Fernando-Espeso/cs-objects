@@ -1120,7 +1120,7 @@ a.size-guide {
 }
 
 .main-information {
-  display: flex;
+  display: block;
 }
 
 .menu-title {
