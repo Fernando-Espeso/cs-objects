@@ -1227,12 +1227,11 @@ grid-column: span 3;
 }
 .total {
   position: sticky;
-  top: 29px;
+  top: 0px;
   z-index: 10;
-  padding: 0px;
-  width: 500px;
-  grid-column: 9/span 4;
-  background: var(--light);
+  padding: 5px;
+  grid-column: span 3;
+  background: white;
   height: fit-content;
   grid-template-columns: repeat(2,1fr);
   display: grid;
@@ -1240,9 +1239,8 @@ grid-column: span 3;
 }
 
 .item {
-  grid-column: 9/span 4;
+  grid-column: 5/span 4;
 }
-
 .thumb {
   width: 50%;
 }
