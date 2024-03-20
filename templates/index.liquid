@@ -1,7 +1,7 @@
 <div id="main-collection" class="main">
-    {% for product in collections.top.products limit:  0 %}
-         {% include 'product-body' %}
-    {% endfor %}
+{% for product in collections.all.products %}
+    {% include 'product-body' %}
+{% endfor %}
 </div>
 <style>
 </style>
