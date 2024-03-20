@@ -1363,6 +1363,10 @@ grid-column: span 3;
 }
 .buy-block {
   grid-column: span 12;
+  
+}
+.cart-part {
+  text-align: right;
 }
 }
 
