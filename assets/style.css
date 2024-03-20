@@ -1058,8 +1058,7 @@ transform: translate(-50%, -50%);
   height: 40px;
   text-align: left;
   padding: 5px;
-  color: white;
-  background-color: black;
+  color:grey;
 }
 
 .product-variant-option[open]:not(.unavailable) .color-option {
@@ -1074,8 +1073,8 @@ transform: translate(-50%, -50%);
   cursor: pointer;
   position: relative;
   width: 100%;
-  height: 40px;
-  background-color: white;
+  height: auto;
+ font-size: var(--x)!important;
 }
 
 .product-variant-item input {
