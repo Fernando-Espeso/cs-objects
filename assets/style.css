@@ -651,7 +651,6 @@ details > summary::-webkit-details-marker {
 .page_title_size{
   background-color: var(--darker);
   margin: 0 auto;
-  width: 500px;
   padding: 5px;
   padding-bottom: 2px;
 }
@@ -1157,7 +1156,6 @@ footer:hover .hide{
   right: 5px;
   height: fit-content;
   position: sticky;
-  width: 500px;
   padding-bottom: 10px;
 }
 .buy-block.active {
