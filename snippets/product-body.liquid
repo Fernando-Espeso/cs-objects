@@ -103,15 +103,14 @@
               class="product-variants"
             {%- endif -%}
             >
-        {% if product.compare_at_price > product.price %}
-          <div class="onsale">ON SALE</div>
-        {% else %}
-        {% endif %}
-        {% if product.available %}
-          AVAILABLE
-        {% else %}
-          <div class="sold-out">SOLD OUT</div>
-        {% endif %}
+              
+              {% if product.compare_at_price > product.price %}
+                <div class="onsale">ON SALE</div>
+            {% elsif product.available %}
+                AVAILABLE
+            {% else %}
+                <div class="sold-out">SOLD OUT</div>
+            {% endif %}
       </form>
 
       <div class="product-sizes">
