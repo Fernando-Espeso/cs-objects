@@ -1105,7 +1105,12 @@ a.size-guide {
   display: grid;
   grid-template-columns: repeat(2,1fr);
 }
-
+a:hover{
+  color:grey;
+}
+.small{
+  font-size: var(--m);
+}
 .menu-title {
   top: 29px;
   z-index: 10;
