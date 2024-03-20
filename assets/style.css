@@ -247,8 +247,8 @@ select {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: 'Univers LT Std';
-  font-size: 10px!important;
+  font-family: var(--font)!important;
+  font-size: var(--x);
 }
 
 :root{
@@ -1237,7 +1237,6 @@ grid-column: span 3;
 }
 
 #checkout {
-  padding: 10px!important;
   grid-column: span 2;
   width: 100%;
   font-size: var(--x);
