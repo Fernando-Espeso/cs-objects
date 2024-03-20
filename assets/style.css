@@ -582,8 +582,7 @@ grid-template-columns: repeat(5, 1fr);
   width: 100%;
 }
 .cart-part li a.blink{
-  animation: blinking 1s infinite;
-  animation-iteration-count: 3;
+
 }
 .cart-part li.yellow{
 
