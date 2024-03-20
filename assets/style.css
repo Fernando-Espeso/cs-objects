@@ -793,7 +793,6 @@ details > summary::-webkit-details-marker {
 
 .product-title {
   float: left;
-  text-transform: uppercase;
   font-size: var(--x);
   grid-column: span 2;
 }

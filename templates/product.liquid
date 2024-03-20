@@ -12,9 +12,9 @@
   var selectCallback = function(variant, selector){
     if(variant){
       if(variant.available){
-        jQuery('#add-to-cart').prop('disabled', false).text('ADD TO BAG');
+        jQuery('#add-to-cart').prop('disabled', false).text('Add to Bag');
       }else{
-        jQuery('#add-to-cart').prop('disabled', true).text('SOLD OUT');
+        jQuery('#add-to-cart').prop('disabled', true).text('Sold Out');
       }
       if( variant.compare_at_price > variant.price ) {
         {% if variant.price < variant.compare_at_price %} {{ variant.compare_at_price | money }}{% endif %}
@@ -24,7 +24,7 @@
       }
     }else{
       jQuery('#product-price').empty();
-      jQuery('#add-to-cart').prop('disabled', true).text('ADD TO BAG');
+      jQuery('#add-to-cart').prop('disabled', true).text('Add to Bag');
       {% if product.price_varies %}
         jQuery('#product-price').html('{{ product.price_min | money }} – {{ product.price_max | money }}' );
       {% else %}
