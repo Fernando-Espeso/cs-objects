@@ -1238,9 +1238,9 @@ grid-column: span 3;
 
 #checkout {
   grid-column: span 2;
-  width: 100%;
   font-size: var(--x);
   font-family: var(--font);
+  text-align: left;
 }
 
 .quantity-button {
