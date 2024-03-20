@@ -1229,7 +1229,7 @@ grid-column: span 3;
   position: sticky;
   top: 0px;
   z-index: 10;
-  padding: 5px;
+  padding: 0px;
   grid-column: span 3;
   background: white;
   height: fit-content;
