@@ -562,9 +562,10 @@ grid-template-columns: repeat(5, 1fr);
 }
 
 .cart-part {
-  position: absolute;
+  position: fixed;
   z-index: 101;
   top: 0px;
+  font-size: var(--x);
   width: 124px;
   right:0px;
   display: flex;
@@ -575,7 +576,6 @@ grid-template-columns: repeat(5, 1fr);
   float: right;
 }
 .cart-part:hover li {
-  background-color: yellow;
 }
 .cart-part li{
   width: 100%;
@@ -587,7 +587,7 @@ grid-template-columns: repeat(5, 1fr);
   animation-iteration-count: 3;
 }
 .cart-part li.yellow{
-  background-color: yellow;
+
 }
 @keyframes blinking {
   0% { visibility: hidden; }
