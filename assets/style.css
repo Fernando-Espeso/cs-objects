@@ -721,20 +721,16 @@ details > summary::-webkit-details-marker {
   padding-bottom: 2px!important;
   background-color: var(--light);
   position: relative;
-}
+
 
 .product.sold .row {
   position: relative;
-  background-color: black;
-  color: var(--sold);
 }
 .product.sold .product-title{
   text-decoration: line-through;
 }
 .bag.sold .row {
   position: relative;
-  background-color: black;
-  color: var(--sold);
 }
 
 .product.sale .row {
@@ -751,9 +747,6 @@ details > summary::-webkit-details-marker {
 }
 
 .sold-out {
-    text-align: right;
-    float: right;
-    position: absolute;
     right: 5px;
     color: black;
     left: 0;
