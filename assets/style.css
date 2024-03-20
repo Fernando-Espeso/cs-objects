@@ -1110,7 +1110,6 @@ a.size-guide {
   top: 29px;
   z-index: 10;
   position: fixed;
-  width: 200px;
   font-size: var(--x);
   top: 50%;
   left: 50%;
