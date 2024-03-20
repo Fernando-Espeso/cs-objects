@@ -1111,7 +1111,6 @@ a.size-guide {
   z-index: 10;
   background-color: var(--darker);
   position: fixed;
-  text-transform: uppercase;
   width: 200px;
   padding: 5px 5px 2px;
 }
