@@ -20,40 +20,81 @@
       sold
       {% endif %}
     ">
-      <div style="background-color:var(--darker);" class="row">
-        <div  class="main-information">
-          <div>{{ product.title }}</div>
+      <div class="row">
+        <div class="main-information">
+          <div class="product-title">
+            <a href="{{ product.url }}">{{ product.title }}</a>
+          </div>
+    
+          <div class="section">PRICE</div>
           <div class="product-price">
             {% if product.available %}
-            {% if product.price_varies %}
-            <span>{{ product.price_min | money }}</span> – <span>{{ product.price_max | money }}</span>
+              {% if product.price_varies %}
+                <span>{{ product.price_min | money }}</span> – <span>{{ product.price_max | money }}</span>
+              {% else %}
+                {% if product.compare_at_price > product.price %}
+                  <s>{{ product.compare_at_price | money }}</s>
+                  <span class="red">{{ product.price | money }}</span>
+                {% else %}
+                  <span>{{ product.price | money }}</span>
+                {% endif %}
+              {% endif %}
             {% else %}
-            {% if product.compare_at_price > product.price %}
-            <s>{{ product.compare_at_price | money }}</s>
-            <span class="red">{{ product.price | money }}</span>
-            {% else %}
-            <span>{{ product.price | money }}</span>
-            {% endif %}
-            {% endif %}
-            {% else %}
-            <span>{{ product.price | money }}</span>
+              <span>{{ product.price | money }}</span>
             {% endif %}
           </div>
-          <form id="product-actions" action="/cart/add" method="post" enctype="multipart/form-data"
-            {%- if product.has_only_default_variant -%}
-            class="product-simple"
-            {%- elsif variants > 1 -%}
-            class="product-variants"
-            {%- endif -%}>
-            {% if product.compare_at_price > product.price %}
-            <div class="onsale">ON SALE</div>
-            {% else %}
-            {% endif %}
-            {% if product.available %}
-            {% else %}
-            <div class="sold-out">SOLD OUT</div>
-            {% endif %}
+          {% assign total_stock = 0 %}
+    
+          {% for product in collection.products %}
+              {% if product.available %}
+                  {% assign total_stock = total_stock | plus: 1 %}
+              {% endif %}
+          {% endfor %}
+          
+          <div class="section">UNITS</div>
+          <div>{{ total_stock }}</div>
+    
+    
+          <div class="section">STATUS</div>
+          <form id="product-actions"
+          action="/cart/add"
+          method="post"
+          enctype="multipart/form-data"
+          {%- if product.has_only_default_variant -%}
+          class="product-simple"
+          {%- elsif variants > 1 -%}
+                  class="product-variants"
+                {%- endif -%}
+                >
+                  
+                  {% if product.compare_at_price > product.price %}
+                    <div class="onsale">On Sale</div>
+                {% elsif product.available %}
+                    Available
+                {% else %}
+                    <div class="sold-out">Sold Out</div>
+                {% endif %}
           </form>
+    
+          <div class="product-sizes">
+            {% for option in product.options_with_values %}
+              {%- for value in option.values -%}
+                {% unless option.name == "Color" %}
+                  {%- liquid
+                    assign optionNumber = 'option' | append: option.position
+                    assign optionVariant = false
+                    for variant in product.variants
+                      if variant[optionNumber] == value
+                        assign optionVariant = variant
+                        break
+                      endif
+                    endfor
+                  -%}
+                  <div class="product-size-value {% if optionVariant.available == false %} unavailable {% endif %}">{{ value }}</div>
+                {% endunless %}
+              {%- endfor -%}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <!-- Variations Dropdown -->
