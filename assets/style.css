@@ -1109,7 +1109,10 @@ a:hover{
   color:grey;
 }
 .small{
-  font-size: var(--m);
+  font-size: var(--m)!important;
+}
+.small a{
+  color: grey;
 }
 .cartie{
   text-align: center;
