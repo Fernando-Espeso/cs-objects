@@ -76,20 +76,6 @@ fernandoepeso.info
     </div>
     <!-- Header -->
     <header id="header">
-      <div class="menu" id="menu">
-        <div class="menu-open">MENU</div>
-        <div class="shop">SHOP</div>
-        <div class="search">
-          <a>
-            <form autocomplete="off" action="{{ routes.search_url }}" style="display:flex;">
-             <input type="hidden" name="type" value="product">
-             <input type="text" placeholder="SEARCH PRODUCTS" name="q" value="{{ search.terms | escape }}">
-           </form>
-          </a>
-        </div>
-        <div class="brand desktop">NIIHAI</div>
-        <div class="brand none"><a href="/home">NIIHAI</a></div>
-      </div>
       <div class="cart-part">
         <a href="/cart" class="cov"></a>
         {% for link in linklists.top-bar.links %}
@@ -108,63 +94,8 @@ fernandoepeso.info
         </li>
       </div>
     </header>
-    <div class="categories">
-      {% assign current_collection_handle = collection.handle | default: '' %}
-      {% assign product_count = collections.all.products_count %}
-      <!-- <li {% if request.path == '/collections/all' %}class="active"{% endif %} ><a href="/collections/all">ALL<span> {{ product_count }}</span></a></li> -->
-      {% for collection in collections %}
-        <li id="{{ collection.title }}" {% if collection.handle == current_collection_handle %} class="active" {% endif %}>
-          <a href="{{ collection.url }}">{{ collection.title }} <span>{{ collection.all_products_count }}</span></a>
-        </li>
-      {% endfor %}
-      {% if template == 'collection'%}
-        <li id="hig"><a class="sort invert" data-sort="price">Hight to Low</a></li>
-        <li><a class="sort" data-sort="price">Low to high</a></li>
-      {%- endif -%}
-    </div>
-    <div class="brand-links">
-      {% for link in linklists.menu.links %}
-        <li {% if link.active %}class="active"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </div>
-      <div id="screenSaver">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 289.9 64.7" style="enable-background:new 0 0 289.9 64.7;" xml:space="preserve">
-            <style type="text/css">
-            .st0{fill:#FFFFFF;}
-            </style>
-            <g id="Layer_1">
-            <g>
-              <polygon class="st0" points="48.6,0 14.1,40.7 14.1,0 -0.3,0 -0.3,64.7 13.5,64.7 48.2,24.5 48.2,64.7 62.7,64.7 62.7,0 "></polygon>
-              <rect x="78.4" y="0" class="st0" width="14.5" height="64.7"></rect>
-              <rect x="108.5" y="0" class="st0" width="14.5" height="64.7"></rect>
-              <polygon class="st0" points="185.2,0 185.2,24.9 153.1,24.9 153.1,0 138.6,0 138.6,64.7 153.1,64.7 153.1,41.4 185.2,41.4
-                185.2,64.7 199.7,64.7 199.7,0 "></polygon>
-              <path class="st0" d="M237.8,20.7l6.1,17.7h-12.6L237.8,20.7z M231.2,0l-25.9,64.7h16l5.3-13.8h22l5,13.8h16L244.6,0H231.2z"></path>
-              <rect x="275.1" class="st0" width="14.5" height="64.7"></rect>
-            </g>
-            </g>
-            <g id="Capa_2">
-            </g>
-            <g id="Capa_3">
-            </g>
-            <g id="Capa_4">
-            </g>
-            <g id="Capa_5">
-            </g>
-            </svg>
-
-      </div>
     {{ content_for_layout }}
   <footer>
-    <ul class="nav-brand">
-      {% for link in linklists.main-menu.links %}
-        <li {% if link.active %}class="active"{% endif %}><a class="{{ link.title }}" href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-    <div class="cred">
-    <div class="hide">© NIIHAI UK LONDON {{ 'now' | date: "%Y" }}</div>
-    <div class="credits">SITE BY <a href="https://www.fernandoespeso.info/">FERNANDO ESPESO</a></div>
-    </div>
   </footer>
   {%- if template contains 'product' -%}
     {{ 'global-product.js' | asset_url | script_tag }}
