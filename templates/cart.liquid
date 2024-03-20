@@ -9,9 +9,7 @@
     </div>
     {% for item in cart.items %}
       <div class="item">
-        <div class="thumb">
-          <img class="lazy" src="{{ item | img_url: 'thumb' }}" data-src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}" />
-        </div>
+       
         <div style="background-color:var(--darker);" class="row">
           <div class="main-information">
             <div class="product-title">{{ item.product.title }}</div><br>
@@ -47,7 +45,9 @@
             <div class="siz">{{ item.line_price | money }}</div>
           </div>
         {% endunless %}
-
+        <div class="thumb">
+          <img class="lazy" src="{{ item | img_url: 'thumb' }}" data-src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}" />
+        </div>
       </div>
     {% endfor %}
 
