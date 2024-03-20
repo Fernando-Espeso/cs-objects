@@ -6,6 +6,7 @@
       <button id="checkout" type="submit" name="checkout">Proceed to Checkout</button>
       <div class="section">SUBTOTAL</div>
       <div>{{ cart.total_price | money }}</div>
+      
     </div>
     {% for item in cart.items %}
       <div class="item">
