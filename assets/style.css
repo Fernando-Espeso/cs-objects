@@ -566,6 +566,7 @@ grid-template-columns: repeat(5, 1fr);
   position: fixed;
   z-index: 101;
   top: 0px;
+  padding: 5px;
   font-size: var(--x);
   width: 124px;
   right:0px;
