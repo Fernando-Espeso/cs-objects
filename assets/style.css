@@ -1363,6 +1363,10 @@ grid-column: span 3;
 
 /* Small tablet styles */
 @media (max-width: 600px) {
+
+  .product {
+    grid-column: span 12;
+}
 }
 
 /* Mobile styles */
@@ -1375,7 +1379,5 @@ grid-column: span 3;
 
 /* Small mobile styles */
 @media (max-width: 320px) {
-  .product {
-    grid-column: span 12;
-}
+
 }
