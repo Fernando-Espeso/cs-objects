@@ -1120,7 +1120,8 @@ a.size-guide {
 }
 
 .main-information {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
 }
 
 .menu-title {

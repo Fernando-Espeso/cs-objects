@@ -66,6 +66,12 @@
   <div class="row">
     <!-- Product Title -->
     <div class="main-information">
+      
+      <div class="product-title">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </div>
+
+      <div>PRICE</div>
       <div class="product-price">
         {% if product.available %}
           {% if product.price_varies %}
@@ -82,11 +88,11 @@
           <span>{{ product.price | money }}</span>
         {% endif %}
       </div>
+      <div>ITEMS</div>
+      <div>20</div>
 
-      <div class="product-title">
-        <a href="{{ product.url }}">{{ product.title }}</a>
-      </div>
 
+      <div>STATUS</div>
       <form id="product-actions"
       action="/cart/add"
       method="post"
@@ -102,10 +108,12 @@
         {% else %}
         {% endif %}
         {% if product.available %}
+          AVAILABLE
         {% else %}
           <div class="sold-out">SOLD OUT</div>
         {% endif %}
       </form>
+
       <div class="product-sizes">
         {% for option in product.options_with_values %}
           {%- for value in option.values -%}
