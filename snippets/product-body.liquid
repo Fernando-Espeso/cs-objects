@@ -88,16 +88,15 @@
           <span>{{ product.price | money }}</span>
         {% endif %}
       </div>
-   {% assign total_stock = 0 %}
-{% for product in collection.products %}
-    {{ product.title }} - Available: {{ product.available }}
-    {% if product.available %}
-        {% assign total_stock = total_stock | plus: 1 %}
-    {% endif %}
-{% endfor %}
-
-<div class="section">UNITS</div>
-<div>{{ total_stock }}</div>
+      {% assign total_stock = 0 %}
+      {% for product in collection.products %}
+          {% if product.available %}
+              {% assign total_stock = total_stock | plus: 1 %}
+          {% endif %}
+      {% endfor %}
+      
+      <div class="section">UNITS</div>
+      <div>{{ total_stock }}</div>
 
 
       <div class="section">STATUS</div>
