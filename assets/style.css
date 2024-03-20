@@ -1375,4 +1375,7 @@ grid-column: span 3;
 
 /* Small mobile styles */
 @media (max-width: 320px) {
+  .product {
+    grid-column: span 12;
+}
 }
