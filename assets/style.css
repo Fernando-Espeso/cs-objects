@@ -823,7 +823,7 @@ details > summary::-webkit-details-marker {
       padding: 5px 5px 2px;
       /* width: auto; */
       position: absolute;
-      display: flex;
+      display: none;
       gap: 5px;
       justify-content: space-between;
       align-items: center;
