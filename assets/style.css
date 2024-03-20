@@ -700,7 +700,7 @@ details > summary::-webkit-details-marker {
   display: grid;
   height: fit-content;
   display: grid;
-  grid-column: span 4;
+  grid-column: span 3;
 }
 
 .product:hover .row{
