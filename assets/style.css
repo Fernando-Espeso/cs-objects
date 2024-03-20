@@ -739,12 +739,10 @@ details > summary::-webkit-details-marker {
 
 .product.sale .row {
   position: relative;
-  background-color: yellow;
   color: black;
 }
 .bag.sale .row {
   position: relative;
-  background-color: yellow;
   color: black;
 }
 
