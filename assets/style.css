@@ -569,12 +569,9 @@ grid-template-columns: repeat(5, 1fr);
   font-size: var(--x);
   width: 124px;
   right:0px;
-  display: flex;
-  justify-content: space-between;
 }
 .cart-total{
-  text-align: right;
-  float: right;
+  align-self: flex-end;
   font-size: var(--m)!important;
 }
 .cart-part:hover li {
