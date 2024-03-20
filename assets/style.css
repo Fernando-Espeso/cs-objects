@@ -806,7 +806,7 @@ details > summary::-webkit-details-marker {
 .product-title {
   float: left;
   text-transform: uppercase;
-  font-size: var(--l);
+  font-size: var(--x);
 }
 
 .product-price {
