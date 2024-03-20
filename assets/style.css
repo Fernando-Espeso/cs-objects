@@ -727,7 +727,7 @@ details > summary::-webkit-details-marker {
   position: relative;
 }
 .product.sold .product-title{
-  text-decoration: line-through;
+ color:grey;
 }
 .bag.sold .row {
   position: relative;
