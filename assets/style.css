@@ -497,6 +497,7 @@ a.active{
   color: black;
 }
 .choose{
+  font-size: var(--m);
   padding-bottom: 2px!important;
   padding: 5px;
   text-transform: uppercase;
