@@ -575,6 +575,7 @@ grid-template-columns: repeat(5, 1fr);
 .cart-total{
   text-align: right;
   float: right;
+  font-size: var(--m)!important;
 }
 .cart-part:hover li {
 }

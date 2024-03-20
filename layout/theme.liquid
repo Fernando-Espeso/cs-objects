@@ -92,13 +92,13 @@ fernandoepeso.info
         {% endfor %}
         <li {% if cart.item_count > 0 %} {% endif %}  {% if template == 'cart' %}  style="color:grey;"{% endif %}>
           <a id="cart" href="/cart">
-            BAG <span class="cart-total">
-              {%- if cart.item_count == 0 -%}
+            BAG  [<span class="cart-total">
+             {%- if cart.item_count == 0 -%}
                 0
               {%- else -%}
                 {{- cart.item_count -}}
               {%- endif -%}
-            </span>
+            </span>]
           </a>
         </li>
       </div>
