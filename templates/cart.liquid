@@ -1,9 +1,8 @@
 {% if cart.item_count > 0 %}
   <form id="cart-wrapper" action="/cart" method="post">
     <div class="total">
-      <div>SUBTOTAL</div>
+      <div class="section">SUBTOTAL</div>
       <div>{{ cart.total_price | money }}</div>
-      <div>SHIPPING</div>
       <div>CALCULATED AT CHECKOUT</div>
       <input id="update-cart" type="submit" name="update" value="Update cart" style="display: none" />
       <button id="checkout" type="submit" name="checkout">PROCEED TO CHECKOUT</button>
@@ -36,7 +35,7 @@
         {% unless item.product.options contains 'Title' %}
           <!--Variations-->
           <div class="double">
-            <div class="siz">SIZE</div>
+            <div class="siz section">SIZE</div>
             <div class="siz">
               {%- for option_title in item.product.options -%}
                 {{ item.variant.options[forloop.index0] }}{% unless forloop.last  %}<br> {% endunless %}
@@ -44,19 +43,11 @@
             </div>
           </div>
           <div class="double">
-            <div class="siz">SUBTOTAL</div>
+            <div class="siz section">SUBTOTAL</div>
             <div class="siz">{{ item.line_price | money }}</div>
           </div>
         {% endunless %}
 
-      </div>
-      <div class="payment">
-      <li><span></span> PAYMENT</li>
-      <li><span></span> KLARNA</li>
-      <li><span></span> PAYPAL</li>
-      <li><span></span> TRANSFERWISE</li>
-      <li><span></span> STRIBE</li>
-      <li><span></span> APPLE PAY</li>
       </div>
     {% endfor %}
 
