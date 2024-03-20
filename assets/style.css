@@ -1338,7 +1338,13 @@ grid-column: span 3;
 
 /* Small tablet styles */
 @media (max-width: 600px) {
-
+	:root{
+		--white:#f1f2f2;
+		--m: 10px;
+		--x: 18px;
+		--s: 10px;
+		--font:'Caballo-Sans-Display-400-Trial';
+	}
   .product {
     grid-column: span 12;
 }
