@@ -1235,7 +1235,7 @@ grid-column: span 3;
   height: fit-content;
   grid-template-columns: repeat(2,1fr);
   display: grid;
-      margin-bottom: calc(var(--m) + 5px);
+  margin-bottom: calc(var(--m) + 5px);
 }
 
 .item {
