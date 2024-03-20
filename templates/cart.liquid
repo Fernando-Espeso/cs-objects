@@ -48,9 +48,10 @@
         </div>
       </div>
     {% endfor %}
+    <div class="section">SUBTOTAL</div>
+    <div>{{ cart.total_price | money }}</div>
   </form>
-  <div class="section">SUBTOTAL</div>
-  <div>{{ cart.total_price | money }}</div>
+
 {% else %}
   <!--Empty Bag-->
   <div class="menu-title cartie">Your bag is Currently empty <br><div class="small">GO BACK TO 
