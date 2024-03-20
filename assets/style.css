@@ -1083,12 +1083,9 @@ transform: translate(-50%, -50%);
 }
 
 .variations #add-to-bag {
-  font-family: 'Univers LT Std';
-  font-size: 10px!important;
-  background: BLACK;
-  color:white;
-  height: 40px;
-  width: 100%;
+  font-family: var(--font);
+  font-size: var(--x)!important;
+  padding: 5px;
 }
 
 
@@ -1159,9 +1156,10 @@ footer:hover .hide{
 /* Buy block styles */
 .buy-block {
   z-index: 10;
-  top: 29px;
+  top: 10px;
   right: 5px;
-  position: fixed;
+  height: fit-content;
+  position: sticky;
   width: 500px;
   padding-bottom: 10px;
 }
