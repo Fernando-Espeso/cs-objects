@@ -1111,7 +1111,8 @@ a:hover{
 .small{
   font-size: var(--m);
 }
-.menu-title {
+.cartie{
+  text-align: center;
   top: 29px;
   z-index: 10;
   position: fixed;
