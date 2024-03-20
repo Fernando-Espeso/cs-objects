@@ -714,7 +714,7 @@ details > summary::-webkit-details-marker {
 }
 
 .row {
-  padding-bottom: 2px!important;
+  padding: 5px;
   background-color: var(--light);
   position: relative;
 }
