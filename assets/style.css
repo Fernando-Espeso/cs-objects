@@ -335,19 +335,26 @@ a:hover {
 }
 /* Body styles */
 body {
-  padding: 5px;
-  font-size: var(--m);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: none;
-  font-smoothing: antialiased;
+	min-height: 100vh;
+	padding: 0px;
+	counter-reset: section;
+	color: black;
+  font-family:var(--font);
+	font-size: var(--m);
+	line-height: auto;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	background: white;
+	font-variant-ligatures: discretionary-ligatures;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+	animation: identifier;
+  animation-duration: 1s;
+	letter-spacing: 0.5px;
+	animation-fill-mode: forwards;
 }
 
 /* Image and video styles */
@@ -378,6 +385,10 @@ video {
 	background-color: white;
 }
 
+.section{
+  color: grey;
+  padding: 0px 0px 0px 0px;
+}
 
 
 
