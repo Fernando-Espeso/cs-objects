@@ -1270,10 +1270,6 @@ grid-column: span 3;
 
 .remove{
   height: fit-content;
-  padding: 5px;
-  padding-bottom: 2px;
-  background-color: var(--light);
-  color: black
 }
 .remove:hover{
   background-color: var(--darker);
