@@ -75,7 +75,16 @@ fernandoepeso.info
       </script>
     </div>
     <!-- Header -->
-    <header id="header">
+    <div class="header" id="header">
+      <div class="section">CABALLO  &nbsp;SERVICES</div>
+      <div class="nav">
+        <a href="">SELECTED</a>
+        <a href="">INFORMATION</a>
+        <a href="">ARCHIVE</a>
+        <a class="active" href"">OBJECTS</a>
+        </div>
+      </div>
+      
       <div class="cart-part">
         <a href="/cart" class="cov"></a>
         {% for link in linklists.top-bar.links %}
@@ -93,7 +102,8 @@ fernandoepeso.info
           </a>
         </li>
       </div>
-    </header>
+  
+
     {{ content_for_layout }}
   <footer>
   </footer>
