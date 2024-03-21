@@ -1301,7 +1301,8 @@ grid-column: span 2;
 }
    .related-title {
     position: sticky;
-    top: calc(var(--m) + 10px);
+    top: 10px;
+    z-index: 1;
 }
 
 @media (max-width: 812px) and (orientation: landscape) {
