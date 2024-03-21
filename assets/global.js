@@ -54,6 +54,18 @@ $('.brand.desktop').click(function(){
      $('.brand-links').toggle();
 });
 
+
+function updateContent() {
+  var contentDiv = $(".nav info");
+  if ($(window).width() < 600) {
+    // Change content for mobile view
+    contentDiv.html("INFO");
+  } else {
+    // Revert to default content
+    contentDiv.html("INFORMATION");
+  }
+}
+
 $('#close').click(function(){
      $('.filters_shop').removeClass("open");
      $('#close').hide();
