@@ -56,7 +56,7 @@ $('.brand.desktop').click(function(){
 
 
 function updateContent() {
-  var contentDiv = $(".nav info");
+  var contentDiv = $(".nav .info");
   if ($(window).width() < 600) {
     // Change content for mobile view
     contentDiv.html("INFO");
