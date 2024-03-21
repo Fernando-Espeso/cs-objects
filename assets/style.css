@@ -668,18 +668,18 @@ details > summary::-webkit-details-marker {
   min-height: 100vh;
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(8, 1fr);
 }
 .related {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(8, 1fr);
 }
 
 #products {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   margin-top: 43px;
 }
 
@@ -697,7 +697,7 @@ details > summary::-webkit-details-marker {
   display: grid;
   height: fit-content;
   display: grid;
-  grid-column: span 3;
+  grid-column: span 2;
 }
 
 .product:hover .row{
