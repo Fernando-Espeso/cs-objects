@@ -699,9 +699,8 @@ details > summary::-webkit-details-marker {
   grid-column: span 2;
 }
 
-.product:hover .row{
+.product:hover .main-information{
   color:grey;
-
 }
 
 .thumbnail {
