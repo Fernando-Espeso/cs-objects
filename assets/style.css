@@ -385,12 +385,11 @@ video {
 	background-color: white;
 }
 
-.section{
-  color: grey;
-  padding: 0px 0px 0px 0px;
+.section {
+  grid-column: 1/span 2;
+  color: gray;
+  padding: 0;
 }
-
-
 
 
 
@@ -1102,7 +1101,7 @@ a.size-guide {
 
 .main-information {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(6,1fr);
 }
 a:hover{
   color:grey;
