@@ -1235,7 +1235,7 @@ grid-column: span 2;
   grid-column: span 3;
   background: white;
   height: fit-content;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(6,1fr);
   display: grid;
   margin-bottom: calc(var(--m) + 5px);
 }
@@ -1248,7 +1248,7 @@ grid-column: span 2;
 }
 
 #checkout {
-  grid-column: span 2;
+  grid-column: span 6;
   font-size: var(--x);
   font-family: var(--font);
   text-align: left;
