@@ -1167,7 +1167,7 @@ footer:hover .hide{
   right: 5px;
   height: fit-content;
   position: sticky;
-  padding-bottom: 0px;
+  padding-bottom: 5px;
   grid-column: span 2;
 }
 .buy-block.active {
