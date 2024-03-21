@@ -10,13 +10,12 @@
     </div>
     {% for item in cart.items %}
       <div class="item">
-        <div style="background-color:var(--darker);">
+        <div>
           <div class="main-information">
             <div class="product-title">{{ item.product.title }}</div>
             <div class="section">PRICE</div>
             <div class="product-price">{{ item.price | money }}</div>
-          </div>
-        </div>
+     
  
           <div class="section">QUANTITY</div>
           <div class="item-quantity">
@@ -44,6 +43,8 @@
           <div class="siz section">SUBTOTAL</div>
           <div class="siz">{{ item.line_price | money }}</div>
           {% endunless %}
+        </div>
+      </div>
         <div class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0">REMOVE</a></div>
         <div class="thumb">
           <img class="lazy" src="{{ item | img_url: 'thumb' }}" data-src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}" />
