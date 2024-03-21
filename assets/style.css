@@ -1175,7 +1175,7 @@ opacity: 0;
 pointer-events: none;
 }
 #related .product{
-grid-column: span 3;
+grid-column: span 2;
 }
 
 #bag {
