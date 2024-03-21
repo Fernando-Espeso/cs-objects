@@ -72,6 +72,9 @@ fernandoepeso.info
             $(this).remove();
           });
         }, 500);
+        
+        updateContent();
+        $(window).resize(updateContent);
 
         function updateContent() {
           var contentDiv = $(".info");
