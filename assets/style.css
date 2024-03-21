@@ -1320,7 +1320,7 @@ grid-column: span 2;
 @media (max-width: 1200px) {
   /* PRODUCTS */
   .product{
-    grid-column: span 6;
+    grid-column: span 4;
   }
   .related {
     flex-grow: 1;
