@@ -1330,7 +1330,9 @@ grid-column: span 2;
     grid-template-columns: repeat(1,1fr);
     grid-column: span 12;
 }
-
+.buy-block {
+  grid-column: span 4;
+}
 }
 
 /* iPad portrait styles */
