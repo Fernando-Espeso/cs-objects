@@ -17,7 +17,7 @@
             <div class="product-price">{{ item.price | money }}</div>
           </div>
         </div>
-        <div class="double">
+ 
           <div class="section">QUANTITY</div>
           <div class="item-quantity">
             {% comment %} <span data-field="updates" class="quantity-button minus"><span>–</span></span> {% endcomment %}
@@ -30,22 +30,20 @@
               {% endif %}
             </span>
           </div>
-        </div>
+
         {% unless item.product.options contains 'Title' %}
           <!--Variations-->
-          <div class="double">
-            <div class="siz section">SIZE</div>
-            <div class="siz">
+      
+          <div class="siz section">SIZE</div>
+          <div class="siz">
               {%- for option_title in item.product.options -%}
                 {{ item.variant.options[forloop.index0] }}{% unless forloop.last  %}<br> {% endunless %}
               {%- endfor -%}
-            </div>
           </div>
-          <div class="double">
-            <div class="siz section">SUBTOTAL</div>
-            <div class="siz">{{ item.line_price | money }}</div>
-          </div>
-        {% endunless %}
+
+          <div class="siz section">SUBTOTAL</div>
+          <div class="siz">{{ item.line_price | money }}</div>
+          {% endunless %}
         <div class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0">REMOVE</a></div>
         <div class="thumb">
           <img class="lazy" src="{{ item | img_url: 'thumb' }}" data-src="{{ item | img_url: 'master' }}" alt="{{ item.title | escape }}" />
