@@ -92,7 +92,6 @@ $(document).scroll(function () {
 });
 
  $( document ).ready(function() {
-
   function updateContent() {
     var contentDiv = $(".info");
     if ($(window).width() < 600) {
@@ -103,7 +102,7 @@ $(document).scroll(function () {
       contentDiv.html("INFORMATION");
     }
   }
-  
+
    //SORT
           $('.sort').click(function(){
                    var t = $(this),
