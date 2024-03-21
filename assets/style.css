@@ -1301,7 +1301,7 @@ grid-column: span 2;
 }
    .related-title {
     position: sticky;
-    top: 10px;
+    top: 0px;
     z-index: 1;
 }
 
