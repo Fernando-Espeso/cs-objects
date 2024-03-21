@@ -55,16 +55,7 @@ $('.brand.desktop').click(function(){
 });
 
 
-function updateContent() {
-  var contentDiv = $(".info");
-  if ($(window).width() < 600) {
-    // Change content for mobile view
-    contentDiv.html("INFO");
-  } else {
-    // Revert to default content
-    contentDiv.html("INFORMATION");
-  }
-}
+
 
 $('#close').click(function(){
      $('.filters_shop').removeClass("open");
@@ -101,6 +92,17 @@ $(document).scroll(function () {
 });
 
  $( document ).ready(function() {
+  
+  function updateContent() {
+    var contentDiv = $(".info");
+    if ($(window).width() < 600) {
+      // Change content for mobile view
+      contentDiv.html("INFO");
+    } else {
+      // Revert to default content
+      contentDiv.html("INFORMATION");
+    }
+  }
    //SORT
           $('.sort').click(function(){
                    var t = $(this),
