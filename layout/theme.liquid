@@ -72,6 +72,18 @@ fernandoepeso.info
             $(this).remove();
           });
         }, 500);
+
+        function updateContent() {
+          var contentDiv = $(".info");
+          if ($(window).width() < 600) {
+            // Change content for mobile view
+            contentDiv.html("INFO");
+          } else {
+            // Revert to default content
+            contentDiv.html("INFORMATION");
+          }
+        }
+      
       </script>
     </div>
     <!-- Header -->
