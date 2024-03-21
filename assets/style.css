@@ -1103,6 +1103,9 @@ a.size-guide {
   display: grid;
   grid-template-columns: repeat(6,1fr);
 }
+.main-information .product-price {
+  grid-column: span 4;
+}
 a:hover{
   color:grey;
 }
