@@ -1347,6 +1347,9 @@ grid-column: span 2;
     display: flex;
     justify-content: space-between;
 }
+.nav a {
+  margin-right: 0px;
+}
 	:root{
 		--white:#f1f2f2;
 		--m: 10px;
