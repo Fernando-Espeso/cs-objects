@@ -1163,10 +1163,11 @@ footer:hover .hide{
 .buy-block {
   z-index: 10;
   top: 0px;
+  background-color: white;
   right: 5px;
   height: fit-content;
   position: sticky;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   grid-column: span 2;
 }
 .buy-block.active {
