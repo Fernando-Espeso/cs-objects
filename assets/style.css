@@ -700,7 +700,7 @@ details > summary::-webkit-details-marker {
 }
 
 .product:hover .row{
-  background-color: var(--darker);
+  color:grey;
 
 }
 
