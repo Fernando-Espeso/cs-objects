@@ -939,8 +939,8 @@ span#close {
 }
 
 .product_gallery {
-  grid-template-columns: repeat(1, 1fr);
-  grid-column: 2/span 6;
+  grid-template-columns: repeat(1,1fr);
+  grid-column: 3/span 4;
 }
 .product_gallery_second {
   grid-template-columns: repeat(2, 1fr);
@@ -1168,6 +1168,7 @@ footer:hover .hide{
   height: fit-content;
   position: sticky;
   padding-bottom: 10px;
+  grid-column: span 2;
 }
 .buy-block.active {
 opacity: 0;
