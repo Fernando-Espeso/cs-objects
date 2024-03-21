@@ -1343,6 +1343,10 @@ grid-column: span 2;
 
 /* Small tablet styles */
 @media (max-width: 700px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+}
 	:root{
 		--white:#f1f2f2;
 		--m: 10px;
