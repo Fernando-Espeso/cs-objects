@@ -1,5 +1,22 @@
 {% section 'main-product' %}
 {% include "related" %}
+<div class="cart-part">
+  <a href="/cart" class="cov"></a>
+  {% for link in linklists.top-bar.links %}
+    <li class="nain" {% if link.active %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {% endfor %}
+  <li {% if cart.item_count > 0 %} {% endif %}  {% if template == 'cart' %}  style="color:grey;"{% endif %}>
+    <a id="cart" href="/cart">
+      BAG  <span class="cart-total">
+       {%- if cart.item_count == 0 -%}
+          0
+        {%- else -%}
+          {{- cart.item_count -}}
+        {%- endif -%}
+      </span>
+    </a>
+  </li>
+</div>
 {% assign variants = 0 %}
 {% for option in product.options %}
 {% if product.options.first != 'Title' %}
