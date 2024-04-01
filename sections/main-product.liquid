@@ -1,5 +1,6 @@
 <div id="main-product" class="main" data-section-id="{{ section.id }}" data-product-section>
   <!--INFO-BUY-->
+  {% if product.metafields.custom.object == false %}
   <div class="buy-block">
     <!--PRODUCT INFO-->
     {%- assign productFormId = 'product-form-' | append: section.id -%}
@@ -123,43 +124,17 @@
       </div>
     </div>
     {% endform %}
-    <div class="product_information">
-      <div class="extra">
-        {% unless product.metafields.custom.extra_info == blank %}
-        {{ product.metafields.custom.extra_info }}
-        {% endunless %}
+  {% endif %}
+    {% if product.metafields.custom.object == true %}
+      <div class="buy-block">
+        <div class="section">MATERIAL</div>
+        <div class="product-price">{{ product.metafields.custom.material }}</div>
+        <div class="section">SERIAL NUMBER</div>
+        <div class="product-price" >{{ product.metafields.custom.serial_number }}</div>
+        <div class="section">SIZE</div>
+        <div class="product-price">{{ product.metafields.custom.size }}</div>
       </div>
-    </div>
-    {% assign info = product.metafields.custom.info_product | default: '' %}
-    {% assign shipping = product.metafields.custom.shipping-info | default: '' %}
-    {% assign policies = product.metafields.custom.polcies_info | default: '' %}
-    <div class="desplegable">
-    {% if info != blank %}
-    <details open>
-      <summary>INFO PRODUCT</summary>
-      <div class="interior">
-        {{ product.metafields.custom.product_info | metafield_tag }}
-      </div>
-      </details>
     {% endif %}
-    {% if shipping != blank %}
-    <details>
-      <summary>SHIPPING TIME</summary>
-      <div class="interior">
-        {{ product.metafields.custom.info_shipping | metafield_tag }}
-      </div>
-      </details>
-    {% endif %}
-    {% if policies != blank %}
-    <details>
-      <summary>POLCIES</summary>
-      <div class="interior">
-        {{ product.metafields.custom.info_policies | metafield_tag }}
-      </div>
-      </details>
-    {% endif %}
-    </div>
-  </div>
   <!--GALLERY-->
   <div class="product_gallery">
     {% for media in product.media %}
