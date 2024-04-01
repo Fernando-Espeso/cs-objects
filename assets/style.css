@@ -85,7 +85,7 @@ recommendation-modal__form button:last-of-type {
 .prop{
   padding-top: 20px;;
   font-size: var(--x);
-  line-height: 18px;;
+  line-height: 17px;
 }
 .prop span{
   font-size: var(--m)!important;
