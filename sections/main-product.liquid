@@ -1,132 +1,131 @@
 <div id="main-product" class="main" data-section-id="{{ section.id }}" data-product-section>
   <!--INFO-BUY-->
   {% if product.metafields.custom.object == false %}
-  <div class="buy-block">
-    <!--PRODUCT INFO-->
-    {%- assign productFormId = 'product-form-' | append: section.id -%}
-    {%- form "product", product, id: productFormId, class: '' -%}
-    <input type="hidden" name="product-id" value="{{- product.id -}}">
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-    {%- if product.has_only_default_variant -%}
-    {%- elsif variants > 1 -%}
-    class="product-variants"
-    {%- endif -%}
-    <div id="bag" class="bag
-      {% if product.compare_at_price > product.price %}
-      sale
-      {% else %}
-      {% endif %}
-      {% if product.available %}
-      {% else %}
-      sold
-      {% endif %}
-    ">
-      <div class="row">
-        <div class="main-information">
-          <div class="product-title">
-            <a href="{{ product.url }}">{{ product.title }}</a>
-          </div>
-    
-          <div class="section">PRICE</div>
-          <div class="product-price">
-            {% if product.available %}
-              {% if product.price_varies %}
-                <span>{{ product.price_min | money }}</span> – <span>{{ product.price_max | money }}</span>
-              {% else %}
-                {% if product.compare_at_price > product.price %}
-                  <s>{{ product.compare_at_price | money }}</s>
-                  <span class="red">{{ product.price | money }}</span>
-                {% else %}
-                  <span>{{ product.price | money }}</span>
-                {% endif %}
-              {% endif %}
-            {% else %}
-              <span>{{ product.price | money }}</span>
-            {% endif %}
-          </div>
-          {% assign total_stock = 0 %}
-    
-          {% for product in collection.products %}
+    <div class="buy-block">
+      <!--PRODUCT INFO-->
+      {%- assign productFormId = 'product-form-' | append: section.id -%}
+      {%- form "product", product, id: productFormId, class: '' -%}
+      <input type="hidden" name="product-id" value="{{- product.id -}}">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {%- if product.has_only_default_variant -%}
+      {%- elsif variants > 1 -%}
+      class="product-variants"
+      {%- endif -%}
+      <div id="bag" class="bag
+        {% if product.compare_at_price > product.price %}
+        sale
+        {% else %}
+        {% endif %}
+        {% if product.available %}
+        {% else %}
+        sold
+        {% endif %}
+      ">
+        <div class="row">
+          <div class="main-information">
+            <div class="product-title">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </div>
+      
+            <div class="section">PRICE</div>
+            <div class="product-price">
               {% if product.available %}
-                  {% assign total_stock = total_stock | plus: 1 %}
-              {% endif %}
-          {% endfor %}
-          
-          <div class="section">UNITS</div>
-          <div>{{ total_stock }}</div>
-    
-    
-          <div class="section">STATUS</div>
-          <form id="product-actions"
-          action="/cart/add"
-          method="post"
-          enctype="multipart/form-data"
-          {%- if product.has_only_default_variant -%}
-          class="product-simple"
-          {%- elsif variants > 1 -%}
-                  class="product-variants"
-                {%- endif -%}
-                >
-                  
-                  {% if product.compare_at_price > product.price %}
-                    <div class="onsale">On Sale</div>
-                {% elsif product.available %}
-                    Available
+                {% if product.price_varies %}
+                  <span>{{ product.price_min | money }}</span> – <span>{{ product.price_max | money }}</span>
                 {% else %}
-                    <div class="sold-out">Sold Out</div>
+                  {% if product.compare_at_price > product.price %}
+                    <s>{{ product.compare_at_price | money }}</s>
+                    <span class="red">{{ product.price | money }}</span>
+                  {% else %}
+                    <span>{{ product.price | money }}</span>
+                  {% endif %}
                 {% endif %}
-          </form>
-    
-          <div class="product-sizes">
-            {% for option in product.options_with_values %}
-              {%- for value in option.values -%}
-                {% unless option.name == "Color" %}
-                  {%- liquid
-                    assign optionNumber = 'option' | append: option.position
-                    assign optionVariant = false
-                    for variant in product.variants
-                      if variant[optionNumber] == value
-                        assign optionVariant = variant
-                        break
-                      endif
-                    endfor
-                  -%}
-                  <div class="product-size-value {% if optionVariant.available == false %} unavailable {% endif %}">{{ value }}</div>
-                {% endunless %}
-              {%- endfor -%}
+              {% else %}
+                <span>{{ product.price | money }}</span>
+              {% endif %}
+            </div>
+            {% assign total_stock = 0 %}
+      
+            {% for product in collection.products %}
+                {% if product.available %}
+                    {% assign total_stock = total_stock | plus: 1 %}
+                {% endif %}
             {% endfor %}
+            
+            <div class="section">UNITS</div>
+            <div>{{ total_stock }}</div>
+      
+      
+            <div class="section">STATUS</div>
+            <form id="product-actions"
+            action="/cart/add"
+            method="post"
+            enctype="multipart/form-data"
+            {%- if product.has_only_default_variant -%}
+            class="product-simple"
+            {%- elsif variants > 1 -%}
+                    class="product-variants"
+                  {%- endif -%}
+                  >
+                    
+                    {% if product.compare_at_price > product.price %}
+                      <div class="onsale">On Sale</div>
+                  {% elsif product.available %}
+                      Available
+                  {% else %}
+                      <div class="sold-out">Sold Out</div>
+                  {% endif %}
+            </form>
+      
+            <div class="product-sizes">
+              {% for option in product.options_with_values %}
+                {%- for value in option.values -%}
+                  {% unless option.name == "Color" %}
+                    {%- liquid
+                      assign optionNumber = 'option' | append: option.position
+                      assign optionVariant = false
+                      for variant in product.variants
+                        if variant[optionNumber] == value
+                          assign optionVariant = variant
+                          break
+                        endif
+                      endfor
+                    -%}
+                    <div class="product-size-value {% if optionVariant.available == false %} unavailable {% endif %}">{{ value }}</div>
+                  {% endunless %}
+                {%- endfor -%}
+              {% endfor %}
+            </div>
           </div>
         </div>
+        <!-- Variations Dropdown -->
+        {% render 'product-variants', product: product, formID: productFormId %}
+        <div class="variations">
+          <!-- Button Add To Bag -->
+          {% liquid
+          assign selectedVariant = product.selected_or_first_available_variant
+          if selectedVariant.available
+          assign addToCartText = 'ADD TO BAG'
+          else
+          assign addToCartText = 'SOLD OUT'
+          endif
+          %}
+          <button id="add-to-bag" {% unless product.available %}disabled{% endunless %} type="submit" name="add" data-add-to-cart>
+            <span class="" data-add-to-cart-text>
+              {{ addToCartText }}
+            </span>
+          </button>
+          {% assign product_qty = 0 %}
+          {% for variant in product.variants %}
+          {% if variant.inventory_quantity > 0 %}
+          {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
-      <!-- Variations Dropdown -->
-      {% render 'product-variants', product: product, formID: productFormId %}
-      <div class="variations">
-        <!-- Button Add To Bag -->
-        {% liquid
-        assign selectedVariant = product.selected_or_first_available_variant
-        if selectedVariant.available
-        assign addToCartText = 'ADD TO BAG'
-        else
-        assign addToCartText = 'SOLD OUT'
-        endif
-        %}
-        <button id="add-to-bag" {% unless product.available %}disabled{% endunless %} type="submit" name="add" data-add-to-cart>
-          <span class="" data-add-to-cart-text>
-            {{ addToCartText }}
-          </span>
-        </button>
-        {% assign product_qty = 0 %}
-        {% for variant in product.variants %}
-        {% if variant.inventory_quantity > 0 %}
-        {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
-        {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-    {% endform %}
-  </div> 
+      {% endform %}
   {% endif %}
-    {% if product.metafields.custom.object == true %}
+  {% if product.metafields.custom.object == true %}
       <div class="buy-block">
         <div class="row">
           <div class="main-information">
@@ -142,7 +141,7 @@
          <div>
         </div>
       </div>
-    {% endif %}
+  {% endif %}
   <!--GALLERY-->
   <div class="product_gallery">
     {% for media in product.media %}
