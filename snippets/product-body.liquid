@@ -64,6 +64,7 @@
   </div>
 
   <div class="row">
+    {% if product.metafields.custom.object == false %}
     <!-- Product Title -->
     <div class="main-information">
       <div class="product-title">
@@ -140,6 +141,8 @@
         {% endfor %}
       </div>
     </div>
+  {% endif %}
+
     {% if product.metafields.custom.object == true %}
       <div class="main-information">
         <div class="section">MATERIAL</div>
