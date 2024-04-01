@@ -140,14 +140,16 @@
         {% endfor %}
       </div>
     </div>
-    <div class="main-information">
-      <div class="section">MATERIAL</div>
-      <div class="">{{ product.metafields.custom.material }}</div>
-      <div class="section">SERIAL NUMBER</div>
-      <div class="">{{ product.metafields.custom.serial_number }}</div>
-      <div class="section">SIZE</div>
-      <div class="">{{ product.metafields.custom.size }}</div>
-    </div>
+    {% if product.metafields.custom.object == true %}
+      <div class="main-information">
+        <div class="section">MATERIAL</div>
+        <div>{{ product.metafields.custom.material }}</div>
+        <div class="section">SERIAL NUMBER</div>
+        <div>{{ product.metafields.custom.serial_number }}</div>
+        <div class="section">SIZE</div>
+        <div>{{ product.metafields.custom.size }}</div>
+      </div>
+    {% endif %}
 
   </div>
 </div>
