@@ -1322,7 +1322,7 @@ grid-column: span 2;
       position: relative;
       height: fit-content;
       display: grid;
-      grid-column: span 3;
+      grid-column: span 4;
   }
 }
 /* Mobile landscape styles */
@@ -1343,14 +1343,16 @@ grid-column: span 2;
 .buy-block {
   grid-column: span 4;
 }
+.main {
+    grid-template-columns: repeat(12,1fr);
 }
-
-/* iPad portrait styles */
-@media (max-width: 750px) {
 }
 
 /* Small tablet styles */
 @media (max-width: 700px) {
+  .main {
+    grid-template-columns: repeat(8,1fr);
+}
   .nav {
     width: calc(100vw - 10px);
     display: flex;
