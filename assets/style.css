@@ -1357,6 +1357,10 @@ grid-column: span 2;
   .main {
     grid-template-columns: repeat(8,1fr);
 }
+.product_gallery {
+  grid-template-columns: repeat(1,1fr);
+  grid-column: span 12;
+}
   .nav {
     width: calc(100vw - 10px);
     display: flex;
