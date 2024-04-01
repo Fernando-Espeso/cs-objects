@@ -127,13 +127,22 @@
   {% endif %}
     {% if product.metafields.custom.object == true %}
       <div class="buy-block">
+      <div class="row">
+        <div class="main-information">
+          <div class="product-title">
+            <a href="{{ product.url }}">{{ product.title }}</a>
+          </div>
+    
+ 
         <div class="section">MATERIAL</div>
         <div class="product-price">{{ product.metafields.custom.material }}</div>
         <div class="section">SERIAL NUMBER</div>
         <div class="product-price" >{{ product.metafields.custom.serial_number }}</div>
         <div class="section">SIZE</div>
         <div class="product-price">{{ product.metafields.custom.size }}</div>
-      </div>
+     <div>
+  <div>
+    <div>
     {% endif %}
   <!--GALLERY-->
   <div class="product_gallery">
