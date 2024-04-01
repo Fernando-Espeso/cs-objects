@@ -82,7 +82,9 @@ recommendation-modal__form button:last-of-type {
 .product-variant-item input[type='radio'].unavailable + label {
   background-color: var(--darker);
 }
-
+.prop{
+  font-size: var(--x);
+}
 .product-variant-item input[type='radio'].unavailable:checked + label {
   background-color: var(--darker);
 }
