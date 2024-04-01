@@ -144,7 +144,11 @@
   {% endif %}
 
     {% if product.metafields.custom.object == true %}
+
       <div class="main-information">
+        <div class="product-title">
+          <a href="{{ product.url }}">{{ product.title }}</a>
+        </div>
         <div class="section">MATERIAL</div>
         <div class="product-price">{{ product.metafields.custom.material }}</div>
         <div class="section">SERIAL NUMBER</div>
